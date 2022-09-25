@@ -1,0 +1,68 @@
+body{
+  background-color: black;
+  color:gray;
+}
+
+#game{
+  height: 60vh; 
+  width: 60vh;
+  background-color: gray;
+}
+
+#game td {
+  border: 1px solid black;
+  height: 33%;
+  text-align: center;
+  color:black;
+  width: 33%;
+  font-size: 5em ;
+}
+
+.oponentes{
+  font-size: 50px;
+
+}
+
+#esconder{
+  display:none;
+}
+
+#placar{
+  display:flex;
+  justify-content: center;
+}
+
+#placar td{
+  border: 1px solid gray;
+  text-align: center;
+  margin: 5px;
+
+}
+
+.player{
+  color:black;
+  background-color: gray;
+  border-radius: 25px;
+  border: 5px ;
+}
+
+#x{
+  color: red;
+  
+}
+
+#tabuleiro{
+  display: flex;
+  justify-content: space-around;
+}
+
+.historico #table{
+  background-color:gray;
+  border: 1px solid black;
+
+}
+
+#table td{
+  border: 1px solid black;
+  color:black;
+}
