@@ -1,0 +1,74 @@
+body{
+  background-color: black;
+  color:gray;
+}
+
+.pagina{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding:10px;
+}
+
+/* Essa estilização monta os quadrados baseados na tabela */
+#game{
+  height: 60vh; 
+  width: 60vh;
+  background-color: gray;
+}
+
+#game td {
+  border: 1px solid black;
+  height: 33%;
+  width: 33%;
+
+  text-align: center;
+  color:black;
+  font-size: 5em ;
+  font-weight: bolder;
+}
+
+/* Texto para utilizar a função de esconder e aparecer */
+.oponentes{
+  display:none;
+}
+
+.esconder{
+  margin:10px;
+  color:red;
+  background-color: gray;
+  display:block;
+  font-size: 50px;
+  text-align: center;
+}
+
+/* Estilização do placar */
+#placar{
+  margin-top: 10px;
+  width: 100%;
+}
+
+#placar td{
+  border: 1px solid gray;
+  text-align: center;
+
+}
+
+/* Formataçao especial para varios elementos */
+.player{
+  background-color: gray;
+  border-radius: 25px;
+}
+
+
+/* Aqui está sendo editado o historico */
+.historico table{
+  background-color:gray;
+
+}
+
+.historico table td{
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  color:black;
+}
