@@ -6,7 +6,6 @@
     <title>Willian </title>
     <link href="style.css" rel="stylesheet" type="text/css" />
     
-<<<<<<< HEAD
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
   </head>
   <body>
@@ -115,120 +114,6 @@
     
   </div>    
  
-=======
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  </head>
-  <body>
-  <form id="tabuleiro">
-    <table id="game" >
-      <tbody >
-        <tr>
-          <td id="1" onclick="jogada('1')"></td>
-          <td id="2" onclick="jogada('2')"></td>
-          <td id="3" onclick="jogada('3')"></td>
-        </tr>
-        <tr>
-          <td id="4" onclick="jogada('4')"></td>
-          <td id="5" onclick="jogada('5')"></td>
-          <td id="6"onclick="jogada('6')"></td>
-        </tr>
-        <tr>
-          <td id="7" onclick="jogada('7')"></td>
-          <td id="8" onclick="jogada('8')"></td>
-          <td id="9" onclick="jogada('9')"></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div id="jogadores">
-      <form action="javascript:void(0)">
-        <table>
-        <tr>
-          <td>
-
-            <label>Jogador 1:</label>
-            <div class="player">
-              <input class="jogador1" placeholder="Nome do Jogador 1">
-            </div>
-
-            <label>Simbolo J1:</label>
-            <select name="jogador" class="jogador1">
-              <option >X</option>
-              <option >O</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label>Jogador 2</label>
-            <div class="player">
-              <input class="jogador2" placeholder="Nome do Jogador 2">
-            </div>
-            <label>Simbolo J2:</label>
-            <select name="jogador" class="jogador2">
-              <option >X</option>
-              <option >O</option>
-            </select>
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <button  type="button" class="player" id="restart" onclick="limparTabuleiro()"> Restart</button>
-            <button  type="button" class="player" id="salva" onclick="savePlayers()">Salvar</button> 
-          </td>
-        </tr>
-        </table>
-      </form>
-
-      <div class="oponentes">
-        <div id="esconder">
-          <label class="name-jogador-um"></label>
-          <label id="x"> X </label>
-          <label class="name-jogador-dois"></label> 
-        </div>
-      </div >
-
-    </div>
-
-  </fo>    
-    
-  <table id="placar">
-    <tbody >
-      <tr>
-        <td>Player 1:</td>
-        <td>Vitorias</td>
-        <td>Derrota</td>
-        <td>Empate</td>
-      </tr>
-      <tr>
-        <td ><label class="name-jogador-um"></label></td>
-        <td ><label id="vitoria"> </label></td>
-        <td ><label id="derrota"> </label></td>
-        <td ><label id="empate"> </label></td>
-      </tr>
-      <tr>
-        <td>Player 2:</td>
-        <td>Vitorias</td>
-        <td>Derrota</td>
-        <td>Empate</td>
-      </tr>
-      <tr>
-        <td ><label class="name-jogador-dois"></label></td>
-        <td ><label id="vitoria2"> </label></td>
-        <td ><label id="derrota2"> </label></td>
-        <td ><label id="empate2"> </label></td>
-      </tr>
-    </tbody>
-  </table>
-    
-  <div class="historico">
-    <table id="table">
-      <caption>Historico de Partidas Jogadas</caption>
-    </table>
-  </div>
-  <button type="button" class="player" onclick="reiniciar_historico()">Reiniciar Historico</button>
->>>>>>> 3b45b7002b7d86fd29ebd538e73beefd2e3beb82
   
   <!-- Java Scripts -->
   <script src="script.js" ></script>

@@ -11,6 +11,7 @@ let empate = 0;
 
 let partidaFinalizada = false;
 let vezdoJogador = true;
+//Combinações para chegar a vitoria
 let svitorias = [
     [0,1,2],
     [3,4,5],
@@ -21,16 +22,18 @@ let svitorias = [
     [0,4,8],
     [2,4,6]
 ];
+
 var jogadas = ['','','','','','','','',''];
 // fim variaveis
 
-localStorage.setItem("vitoria",vitoria);
-localStorage.setItem("derrota",derrota);
-localStorage.setItem("empate",empate);
+(function(){
 
-imprimirPlacar();
+  imprimirPlacar();
+  imprimirTabuleiro();
 
-//funções
+})();
+
+//função que imprime o tabueleiro salvo na tela
 function imprimirTabuleiro(){
   
   for(let i = 0; i <= 8;  i++){
@@ -38,6 +41,7 @@ function imprimirTabuleiro(){
   }
 }
 
+//Função que imprime o placar dos jogadores atuais
 function imprimirPlacar(){
   document.getElementById("vitoria").innerHTML = vitoria;
   document.getElementById("derrota").innerHTML = derrota;
@@ -45,10 +49,10 @@ function imprimirPlacar(){
 
   document.getElementById("vitoria2").innerHTML = derrota;
   document.getElementById("derrota2").innerHTML = vitoria;
-  document.getElementById("empate2").innerHTML =  empate;
 }
 
-function limparTabuleiro(){
+//Função que limpa o tabuleiro e reinicia as jogadas
+let limparTabuleiro = () => {
   partidaFinalizada = false;
   /* document.getElementById("game").disabled = false; */
   this.jogadas = ['','','','','','','','',''];
@@ -58,20 +62,45 @@ function limparTabuleiro(){
 //salvar os jogadores e colocalos no loclStorage ou seja salvar os players no cashe
 let savePlayers = () => {
   
-  localStorage.setItem("nome-jogador1",j1[0].value);
-  localStorage.setItem("simbolo-jogador1",j1[1].value);
+  document.getElementsByClassName("nomeJogador1")[0].innerHTML = j1[0].value;
+  document.getElementsByClassName("nomeJogador2")[0].innerHTML = j2[0].value;
 
-  localStorage.setItem("nome-jogador2",j2[0].value);
-  localStorage.setItem("simbolo-jogador2",j2[1].value);
-
-  document.getElementsByClassName("name-jogador-um")[0].innerHTML = localStorage.getItem("nome-jogador1");
-  document.getElementsByClassName("name-jogador-dois")[0].innerHTML = localStorage.getItem("nome-jogador2");
-
-  document.getElementsByClassName("name-jogador-um")[1].innerHTML = localStorage.getItem("nome-jogador1");
-  document.getElementsByClassName("name-jogador-dois")[1].innerHTML = localStorage.getItem("nome-jogador2");
+  document.getElementsByClassName("nomeJogador1")[1].innerHTML = j1[0].value;
+  document.getElementsByClassName("nomeJogador2")[1].innerHTML = j2[0].value;
   
-  document.getElementById("esconder").style.display = "block";
+  /* document.querySelector("#oponentes").classList.remove("oponentes");
+  document.querySelector("#oponentes").classList.add("esconder"); */
+
+  document.querySelector("#oponentes").setAttribute("class","esconder");
+
+  limparTabuleiro();
 }
+
+//Qunado cada area for tocada a funçao será ativada para preencer o tabuleiro
+let jogada = (id) => {
+  if(document.getElementById(id).textContent === "" && !partidaFinalizada){
+
+    if(vezdoJogador){ 
+
+      this.jogadas[id-1] = j1[1].value;
+      document.getElementById(id).textContent = j1[1].value;
+      saber_resultado(j1[1].value);
+
+    }else{  
+
+      this.jogadas[id-1] = j2[1].value;
+      document.getElementById(id).textContent = j2[1].value;
+      saber_resultado(j2[1].value);
+    }
+  }
+
+  vezdoJogador = !vezdoJogador;
+  
+  imprimirTabuleiro()
+  
+}
+
+//FUNCÕES para conferir se existe um vencedor ou se deu empate
 
 function saber_resultado(simbolo_jogador){
 
@@ -84,10 +113,6 @@ function saber_resultado(simbolo_jogador){
     if(!vitorias ){
       this.empates(contador_de_jogadas);
     }
-
-    localStorage.setItem("vitoria",vitoria);
-    localStorage.setItem("derrota",derrota);
-    localStorage.setItem("empate",empate);
 
     imprimirPlacar()
   }
@@ -103,13 +128,13 @@ function vitorias(simbol){
         this.jogadas[svitorias[i][2]] == simbol )
     {
       //se o simbulo adicionado for do primeiro jogador então será adicionado uma vitoria para ele
-      if(simbol === localStorage.getItem("simbolo-jogador1")){
+      if(simbol === j1[1].value){
         vitoria = 1 + vitoria; 
-        registrarPartidas(this.jogadas, localStorage.getItem("nome-jogador1"));                    
+        registrarPartidas(this.jogadas, j1[0].value, simbol);                    
       //se o simbulo adicionado não é do primeiro jogador então é do segundo jogador, portanto será adicionado uma derrota ao primeiro jogador 
       }else{
         derrota = 1 + derrota;
-        registrarPartidas(this.jogadas, localStorage.getItem("nome-jogador2")); 
+        registrarPartidas(this.jogadas, j2[0].value, simbol); 
       }
 
       //paralisar o tabuleiro
@@ -135,74 +160,84 @@ function empates(numero_de_jogadas){
     
   }
 }
+//FIM das funçoes de resultado
 
-let jogada = (id) => {
-  if(document.getElementById(id).textContent === "" && !partidaFinalizada){
 
-    if(vezdoJogador){ 
+//FUNÇOES para imprimir o historico de partidas
+function registrarPartidas(tabuleiro, vencedor, simbolo){
 
-      this.jogadas[id-1] = localStorage.getItem("simbolo-jogador1");
-      document.getElementById(id).textContent = localStorage.getItem("simbolo-jogador1");
-      saber_resultado(localStorage.getItem("simbolo-jogador1"));
+  let l1 = 'Linha 1: '
+           +tabuleiro[0]+
+            tabuleiro[1]+
+            tabuleiro[2];
 
-    }else{  
+  let l2 = ' Linha 2: '
+  +tabuleiro[3]+
+    tabuleiro[4]+
+    tabuleiro[5];
 
-      this.jogadas[id-1] = localStorage.getItem("simbolo-jogador2");
-      document.getElementById(id).textContent = localStorage.getItem("simbolo-jogador2");
-      saber_resultado(localStorage.getItem("simbolo-jogador2"));
-    }
-  }
+  let l3 = ' Linha 3: '
+  +tabuleiro[6]+
+    tabuleiro[7]+
+    tabuleiro[8];
 
-  vezdoJogador = !vezdoJogador;
-  
-  imprimirTabuleiro()
-  
-}
-
-function registrarPartidas(tabuleiro, vencedor){
-  let tabuleiro2 ='';
-  for( let i = 0; i < 3; i++){
-    tabuleiro2  += 'Linha '+(i+1)+':'+tabuleiro[i]+
-                                    tabuleiro[i+1]+
-                                    tabuleiro[i+2];
-  }
+  tabuleiro = l1 + l2 + l3;
     
-    let partida = [historico_de_partidas.length+1, tabuleiro2, vencedor];
+  let partida = [historico_de_partidas.length+1, tabuleiro, vencedor, simbolo];
 
-    historico_de_partidas.push(partida);
+  historico_de_partidas.push(partida);
 
-    console.log(historico_de_partidas);
-    imprimirHistorico();
+  imprimirHistorico();
 }
 
 function imprimirHistorico(){
 
-    let trs = document.querySelectorAll('.historico #table tr');
-    if( trs.length > 0){
-      trs.forEach((valor) => { valor.remove() })
-    }
-
+    let trs = document.querySelectorAll('.historico table tr');
+    
+    trs.forEach((valor) => { valor.remove() })
+    
     let table = document.querySelector('.historico table');
 
-    for(let i = 0; i < historico_de_partidas.length; i++){
+    linha1 = ["Nº partida", "Tabuleiro da partida", "Vencedor","Simbolo"]
 
-        let tr = document.createElement('tr');
+    let tr = document.createElement('tr');
 
-        historico_de_partidas[i].forEach((valor) => {
-            let td = document.createElement('td');
-            let texto = document.createTextNode(valor);
+    linha1.forEach((valor) => {
+      let td = document.createElement('td');
+      let texto = document.createTextNode(valor);
 
-            td.appendChild(texto);
+      td.appendChild(texto);
+      tr.appendChild(td);
 
-            tr.appendChild(td);
-
-            });
-        
-        table.appendChild(tr);
-        
-    }
+      });
+  
+    table.appendChild(tr);
     
-    
+    if(historico_de_partidas.length > 0){
+        for(let i = 0; i < historico_de_partidas.length; i++){
+
+            let tr = document.createElement('tr');
+
+            historico_de_partidas[i].forEach((valor) => {
+                let td = document.createElement('td');
+                let texto = document.createTextNode(valor);
+
+                td.appendChild(texto);
+
+                tr.appendChild(td);
+
+                });
+            
+            table.appendChild(tr);
+            
+        }
+    }  
+  
 }
 
+function reiniciarHistorico(){
 
+  historico_de_partidas = [];
+
+  imprimirHistorico();
+}

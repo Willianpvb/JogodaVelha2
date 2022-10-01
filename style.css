@@ -3,7 +3,6 @@ body{
   color:gray;
 }
 
-<<<<<<< HEAD
 .pagina{
   display: flex;
   flex-wrap: wrap;
@@ -12,8 +11,6 @@ body{
 }
 
 /* Essa estilização monta os quadrados baseados na tabela */
-=======
->>>>>>> 3b45b7002b7d86fd29ebd538e73beefd2e3beb82
 #game{
   height: 60vh; 
   width: 60vh;
