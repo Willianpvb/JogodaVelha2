@@ -10,10 +10,15 @@ body{
   padding:10px;
 }
 
+button{
+  cursor: pointer;
+}
+
 /* Essa estilização monta os quadrados baseados na tabela */
 #game{
+  margin: 5px;
   height: 60vh; 
-  width: 60vh;
+  width: 30vw;
   background-color: gray;
 }
 
@@ -24,7 +29,7 @@ body{
 
   text-align: center;
   color:black;
-  font-size: 5em ;
+  font-size: 5em;
   font-weight: bolder;
 }
 
@@ -34,12 +39,21 @@ body{
 }
 
 .esconder{
-  margin:10px;
-  color:red;
-  background-color: gray;
   display:block;
-  font-size: 50px;
+  background-color: gray;
+
+
+  margin: 10px 0px;
+  
+  border:10px;
+  border-radius: 15px;
+  border-style: double ;
+
+  color:red;
   text-align: center;
+  font-size: 3em; 
+  font-weight: bold;
+
 }
 
 /* Estilização do placar */
