@@ -1,0 +1,164 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  background-color: black;
+  color:gray;
+}
+
+.pagina{
+  display: flex;
+  justify-content: space-around;
+  padding:10px;
+}
+
+button{
+  cursor: pointer;
+}
+
+#jogadores{
+  width: 30vw;
+}
+/* Essa estilização monta os quadrados baseados na tabela */
+#grade{
+  width: 30vw;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game{
+  margin: 5px;
+  height: 60vh; 
+  width: 100%;
+
+  
+  background-color: gray;
+}
+
+#game td {
+  border: 1px solid black;
+  height: 33%;
+  width: 33%;
+
+  text-align: center;
+  color:black;
+  font-size: 5em;
+  font-weight: bolder;
+}
+
+/* Texto para utilizar a função de esconder e aparecer */
+.oponentes{
+  display:none;
+}
+
+.esconder{
+  display:block;
+  background-color: gray;
+
+  margin: 10px 0px;
+  width: 90%;
+  
+  border:10px;
+  border-radius: 15px;
+  border-style: double ;
+
+  color:red;
+  text-align: center;
+  font-size: 3em; 
+  font-weight: bold;
+
+}
+
+/* Estilização do placar */
+#placar{
+  margin-top: 10px;
+  width: 100%;
+}
+
+#placar td{
+  border: 1px solid gray;
+  text-align: center;
+
+}
+
+/* Formataçao especial para varios elementos */
+.player{
+  background-color: gray;
+  border-radius: 25px;
+}
+
+
+/* Aqui está sendo editado o historico */
+.historico table{
+  background-color:gray;
+
+}
+
+.historico table td{
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  color:black;
+}
+
+
+
+/* DIAGONAIS */
+
+/* .diagonal-left{
+  border-left: 1px solid #FFF;
+  height: 60vh;
+  display: inline-block;
+  position:absolute;
+  border-right: 15px;
+  transform: rotate(-45deg)
+} */
+
+@media(max-width: 992px) {
+  
+  .pagina{
+    flex-wrap: wrap;
+  }
+
+  .historico{
+    margin:auto;
+  }
+  
+  #grade{
+    width: 45vw;
+  }
+
+  #jogadores{
+    width: 45vw;
+  }
+
+  #game{
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media(max-width: 615px) {
+  
+  .pagina{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #jogadores{
+    width: 95vw;
+  }
+
+  #grade{
+    width:95vw;
+    height: 100vh;
+  }
+
+  #game{
+    height: 90%;
+    width: 90%;
+  }
+}
+
