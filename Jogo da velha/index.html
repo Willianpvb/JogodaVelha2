@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Willian </title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  </head>
+  <body>
+  <div class="pagina">
+    <div id="jogadores">
+      <h1>Cadastre os Jogadores Abaixo:</h1>
+      <div>
+          <label>Jogador 1:</label>
+          <input class="player jogador1" placeholder="Nome do Jogador 1">
+          
+          <label>Simbolo J1:</label>
+          <select name="jogador" class="player jogador1">
+            <option >X</option>
+            <option >O</option>
+          </select>
+      </div>
+            
+      <div>
+          <label>Jogador 2:</label>
+          <input class="player jogador2" placeholder="Nome do Jogador 2">
+          
+          <label>Simbolo J2:</label>
+          <select name="jogador" class="player jogador2">
+            <option >X</option>
+            <option >O</option>
+          </select>
+      </div>
+    
+      <button  type="button" class="player" onclick="savePlayers()">Salvar</button> 
+      
+      <table id="placar">
+          <tr>
+            <td colspan="3"><h2>PLACAR</h2></td>
+          </tr>
+          
+          <tr>
+            <td>Player 1:</td>
+            <td>Vitorias</td>
+            <td>Derrota</td>
+          </tr>
+          <tr>
+            <td><label class="nomeJogador1"></label></td>
+            <td><label id="vitoria"> </label></td>
+            <td><label id="derrota"> </label></td>
+          </tr>
+          <tr>
+            <td>Player 2:</td>
+            <td>Vitorias</td>
+            <td>Derrota</td>
+          </tr>
+          <tr>
+            <td><label class="nomeJogador2"></label></td>
+            <td><label id="vitoria2"> </label></td>
+            <td><label id="derrota2"> </label></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2">Empates:</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2"><label id="empate"> </label></td>
+          </tr>
+      </table>
+    </div>
+
+    <div id="grade">
+      <div id="oponentes" class="oponentes">
+          <label class="nomeJogador1"></label>
+          <label> X </label>
+          <label class="nomeJogador2"></label> 
+      </div>
+
+      <table id="game" >
+          <span class="diagonal-left"></span>
+          <tr>
+            <td id="1" onclick="jogada('1')"></td>
+            <td id="2" onclick="jogada('2')"></td>
+            <td id="3" onclick="jogada('3')"></td>
+          </tr>
+          <tr>
+            <td id="4" onclick="jogada('4')"></td>
+            <td id="5" onclick="jogada('5')"></td>
+            <td id="6"onclick="jogada('6')"></td>
+          </tr>
+          <tr>
+            <td id="7" onclick="jogada('7')"></td>
+            <td id="8" onclick="jogada('8')"></td>
+            <td id="9" onclick="jogada('9')"></td>
+          </tr>
+      </table>
+
+      <button type="button" class="player" id="restart" onclick="limparTabuleiro()">JOGAR OUTRA PARTIDA</button>
+
+    </div>
+
+    <div class="historico">
+
+      <table>
+        <caption>Historico de Partidas Jogadas</caption>
+        <tr>
+          <td>Nº partida</td>
+          <td>Tabuleiro da partida</td>
+          <td>Vencedor</td>
+          <td>Simbolo</td>
+        </tr>
+      </table>
+
+      <button type="button" class="player" onclick="reiniciarHistorico()">Reiniciar Historico</button>
+    </div>
+    
+  </div>    
+ 
+  
+  <!-- Java Scripts -->
+  <script src="script.js" ></script>
+  
+
+  </body>
+</html>
